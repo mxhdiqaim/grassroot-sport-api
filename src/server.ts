@@ -1,8 +1,9 @@
-import { Elysia, t } from 'elysia';
+import { Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
 import { staticPlugin } from '@elysiajs/static';
 import { swagger } from '@elysiajs/swagger';
 import { getEnvVariable } from "./utils";
+import {matchRoutes} from "./routes/match.ts";
 // import { routes } from "./routes"; // We'll convert your routes to Elysia modules
 
 const NODE_ENV = getEnvVariable("NODE_ENV");
@@ -36,13 +37,9 @@ export const app = new Elysia()
     })
 
     // Your API Routes
-    .group('/api/v1', (app) => app
-        // Example Route: Go Live
-        .post('/matches/:id/go-live', ({ params }) => {
-            return { message: `Match ${params.id} is now live!` };
-        }, {
-            params: t.Object({ id: t.Numeric() }) // Built-in validation!
-        })
+    .group('/api/v1', (app) =>
+        app.use(matchRoutes)
+        // .use(userRoutes) // You can add more plugins here
     )
 
     // Global Error Handling
