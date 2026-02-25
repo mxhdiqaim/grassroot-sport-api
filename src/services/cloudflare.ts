@@ -1,5 +1,7 @@
-const CLOUDFLARE_ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
-const CLOUDFLARE_API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
+import {getEnvVariable} from "../utils";
+
+const CLOUDFLARE_ACCOUNT_ID = getEnvVariable("CLOUDFLARE_ACCOUNT_ID");
+const CLOUDFLARE_API_TOKEN = getEnvVariable("CLOUDFLARE_API_TOKEN");
 
 export const createLiveInput = async (matchTitle: string) => {
     const response = await fetch(

@@ -6,6 +6,7 @@ const schema = {
     ...matches,
 
     ...relations,
+    
 };
 
 export default schema;
