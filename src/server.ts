@@ -16,7 +16,7 @@ export const app = new Elysia()
     // Performance-optimised CORS
     .use(cors({
         origin: NODE_ENV === "development"
-            ? [/localhost:300[0-2]/]
+            ? [/localhost:300[0-2]/, /localhost:550[0-2]/] // Allow local dev ports
             : [LANDING_PAGE, APP_URL],
         methods: ["GET", "POST", "PATCH", "DELETE"],
         credentials: true
