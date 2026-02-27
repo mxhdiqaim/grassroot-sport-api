@@ -1,4 +1,4 @@
-# grassroots
+# grassroot-sports-api
 
 To install dependencies:
 
